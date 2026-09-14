@@ -1,0 +1,18 @@
+{
+  "name": "skills-igb",
+  "owner": { "name": "Sistemas IGB", "email": "sistemas@igb.network" },
+  "metadata": {
+    "description": "Skills en español para arrancar y operar proyectos con criterio empresarial"
+  },
+  "plugins": [
+    {
+      "name": "skills-igb",
+      "source": "./",
+      "description": "Cinco skills que hacen que Claude Code trabaje con criterio de proyecto empresarial: nuevo-proyecto (interroga los requisitos antes de escribir código), contenedores (Docker + NGINX), ci-cd, calidad-codigo (SonarQube) y pruebas-carga (K6 + Grafana).",
+      "version": "1.0.0",
+      "author": { "name": "Sistemas IGB", "email": "sistemas@igb.network" },
+      "license": "MIT",
+      "keywords": ["scaffolding", "docker", "nginx", "ci-cd", "sonarqube", "k6", "espanol"]
+    }
+  ]
+}
