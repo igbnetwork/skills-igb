@@ -9,7 +9,7 @@ La principal, `nuevo-proyecto`, **no empieza a escribir código: empieza pregunt
 ### Como plugin (recomendado)
 
 ```bash
-claude plugin marketplace add <usuario>/<repositorio>
+claude plugin marketplace add igbnetwork/skills-igb
 claude plugin install skills-igb@skills-igb
 ```
 
@@ -24,8 +24,8 @@ claude plugin marketplace update skills-igb
 Si prefieres no usar el sistema de plugins:
 
 ```bash
-git clone https://github.com/<usuario>/<repositorio>.git
-cd <repositorio>
+git clone https://github.com/igbnetwork/skills-igb.git
+cd skills-igb
 ./instalar.sh
 ```
 

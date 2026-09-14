@@ -2,7 +2,21 @@
   "name": "skills-igb",
   "version": "1.0.0",
   "description": "Skills de Claude Code para arrancar y operar proyectos con criterio empresarial: interrogatorio de requisitos antes de escribir código, contenedores, CI/CD, calidad de código y pruebas de carga. En español y agnósticas de stack.",
-  "author": { "name": "Sistemas IGB", "email": "sistemas@igb.network" },
+  "author": {
+    "name": "Sistemas IGB",
+    "email": "sistemas@igb.network"
+  },
   "license": "MIT",
-  "keywords": ["scaffolding", "docker", "nginx", "ci-cd", "sonarqube", "k6", "grafana", "espanol"]
+  "keywords": [
+    "scaffolding",
+    "docker",
+    "nginx",
+    "ci-cd",
+    "sonarqube",
+    "k6",
+    "grafana",
+    "espanol"
+  ],
+  "homepage": "https://github.com/igbnetwork/skills-igb",
+  "repository": "https://github.com/igbnetwork/skills-igb"
 }
