@@ -1,15 +1,41 @@
 {
   "name": "skills-igb",
-  "version": "1.2.0",
-  "description": "Cinco skills para Claude Code que arrancan y operan proyectos con criterio empresarial: interrogatorio de requisitos antes de escribir codigo, Docker + NGINX, CI/CD, SonarQube y pruebas de carga con K6. En espanol, agnosticas de stack.",
+  "version": "1.2.1",
+  "description": "Cinco skills para Claude Code que arrancan y operan proyectos con criterio empresarial: interrogatorio de requisitos antes de escribir código, Docker + NGINX, CI/CD, SonarQube y pruebas de carga con K6. En español, agnósticas de stack.",
   "type": "module",
-  "bin": { "skills-igb": "bin/instalar.js" },
-  "files": ["bin/", "skills/", "README.md", "README.en.md", "LICENSE"],
-  "engines": { "node": ">=18" },
-  "keywords": ["claude-code", "claude", "skills", "scaffolding", "docker", "nginx", "ci-cd", "sonarqube", "k6", "espanol"],
+  "bin": {
+    "skills-igb": "bin/instalar.js"
+  },
+  "files": [
+    "bin/",
+    "skills/",
+    "README.md",
+    "README.en.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "claude-code",
+    "claude",
+    "skills",
+    "scaffolding",
+    "docker",
+    "nginx",
+    "ci-cd",
+    "sonarqube",
+    "k6",
+    "espanol"
+  ],
   "author": "Sistemas IGB <sistemas@igb.network>",
   "license": "MIT",
   "homepage": "https://github.com/igbnetwork/skills-igb",
-  "repository": { "type": "git", "url": "git+https://github.com/igbnetwork/skills-igb.git" },
-  "bugs": { "url": "https://github.com/igbnetwork/skills-igb/issues" }
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/igbnetwork/skills-igb.git"
+  },
+  "bugs": {
+    "url": "https://github.com/igbnetwork/skills-igb/issues"
+  }
 }

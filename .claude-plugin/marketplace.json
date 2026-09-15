@@ -12,7 +12,7 @@
       "name": "skills-igb",
       "source": "./",
       "description": "Cinco skills que hacen que Claude Code trabaje con criterio de proyecto empresarial: nuevo-proyecto (interroga los requisitos antes de escribir código), contenedores (Docker + NGINX), ci-cd, calidad-codigo (SonarQube) y pruebas-carga (K6 + Grafana).",
-      "version": "1.2.0",
+      "version": "1.2.1",
       "author": {
         "name": "Sistemas IGB",
         "email": "sistemas@igb.network"

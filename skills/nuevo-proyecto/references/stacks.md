@@ -10,7 +10,7 @@ Toolchain verificado en esta máquina: Node 22, npm 10, Python 3.14, git 2.53, m
 
 ## `angular` — SPA Angular
 
-Referencia viva en la casa: `IGB-NETWORK/NetworkIGB` (Angular 11 + Material + ng-bootstrap).
+Encaja con SPAs de gestión: Angular + Material o ng-bootstrap.
 
 ```bash
 npx --yes @angular/cli@latest new <nombre> --style=scss --routing --ssr=false --skip-git
@@ -36,7 +36,7 @@ src/app/
 
 ## `api-node` — API Node + Express + MongoDB
 
-Referencia viva en la casa: `IGB-NETWORK/BackendNetworkIGB/api`.
+API REST clásica: rutas, controladores, modelos y middleware separados.
 
 ```bash
 mkdir -p <nombre>/src/{routes,controllers,models,middleware,config,utils} <nombre>/src/__tests__
@@ -101,7 +101,7 @@ Comprobar solo la sintaxis (`node --check`) no basta: un proyecto puede pasarlo 
 
 ## `vite` — Frontend Vite (JS/React/Vue)
 
-Referencia viva en la casa: `SARMATA/SarmataFrontEnd` (Vite + ESLint, deploy en Vercel).
+Frontend ligero con ESLint, típicamente desplegado en Vercel o similar.
 
 ```bash
 npm create vite@latest <nombre> -- --template <vanilla|react|vue>
@@ -134,7 +134,7 @@ Sin `package.json` ni dependencias. Para servirlo en local: `python3 -m http.ser
 
 ## `python` — Script o utilidad Python
 
-Para informes, migraciones y tareas sobre Mongo (estilo `informes-igb/`).
+Para informes, migraciones y tareas puntuales sobre una base de datos.
 
 ```bash
 mkdir -p <nombre>/src && cd <nombre>

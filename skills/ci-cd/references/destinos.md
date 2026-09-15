@@ -2,11 +2,11 @@
 
 Elige según lo que la empresa **ya paga**, no según lo que sea más moderno. Confírmalo con el usuario antes de escribir el paso de deploy.
 
-## Estado actual de estos proyectos
+## Antes de elegir
 
-- **SarmataFrontEnd** → Vercel (tiene `vercel.json` en el repo).
-- **IGB-NETWORK** → Render (las variables de entorno se gestionan en su panel).
-- **AWS** → el usuario aún no ha confirmado qué servicios paga la empresa. **No escribas despliegues a AWS hasta saberlo**: un pipeline contra servicios que no existen es ruido, y uno contra los equivocados puede generar coste.
+Averigua **qué usa ya el equipo** en lugar de proponer algo nuevo: mira si hay un `vercel.json`, un `render.yaml`, un `Procfile` o credenciales de algún proveedor en la configuración del repositorio. Reutilizar el proveedor que ya se paga y se sabe operar vale más que la plataforma técnicamente mejor.
+
+Si el destino es AWS, **no elijas por tu cuenta**: hay que confirmar qué servicios tiene contratados la organización. Un pipeline contra servicios que no existen es ruido, y uno contra los equivocados genera coste.
 
 ---
 

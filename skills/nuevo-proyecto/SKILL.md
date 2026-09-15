@@ -61,7 +61,7 @@ Hazlo con respeto y sin condescendencia: quien responde entiende su negocio mejo
 
 10. **Nombre** → en `kebab-case`; será el directorio y el identificador del proyecto.
 11. **Stack** → pregunta abierta, no una lista cerrada. Si nombra uno con receta en `references/stacks.md` (`angular`, `api-node`, `vite`, `estatico`, `python`), úsala; si no, aplica el procedimiento genérico de ese fichero. **Si quien responde no es programador, no le pidas que elija el stack: recomiéndalo tú a partir de los bloques A y B, explica en una frase por qué, y pide su visto bueno.**
-12. **Ubicación** → por defecto `/home/sistemas/<nombre>`. Confirma si va dentro de un monorepo existente.
+12. **Ubicación** → por defecto, un directorio `<nombre>` junto a los demás proyectos del usuario (normalmente el directorio actual o su carpeta habitual de trabajo). Confirma si va dentro de un monorepo existente.
 13. **Despliegue** → dónde va a vivir: Render, Vercel, VPS, AWS, o aún ninguno. Si no se sabe, `ninguno` es una respuesta válida y el proyecto se prepara para decidirlo después.
 14. **Entornos** → ¿hará falta un entorno de pruebas separado del real? Para cualquier cosa con usuarios de verdad, la respuesta es sí.
 
