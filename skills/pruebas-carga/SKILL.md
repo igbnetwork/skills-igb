@@ -1,6 +1,6 @@
 ---
 name: pruebas-carga
-description: Diseñar y ejecutar pruebas de carga y rendimiento con K6, y visualizar los resultados en Grafana — escenarios smoke/load/stress/soak, thresholds como criterio de aprobación, métricas y percentiles, salida a Prometheus o InfluxDB y paneles de Grafana. Úsala cuando el usuario hable de K6, pruebas de carga, estrés, rendimiento, latencia, throughput, cuántos usuarios aguanta, Grafana, observabilidad o dashboards de métricas.
+description: Diseñar y ejecutar pruebas de carga y rendimiento con K6, y visualizar los resultados en Grafana — escenarios smoke, load, stress y soak, thresholds como criterio de aprobación, métricas y percentiles, salida a Prometheus o InfluxDB y paneles de Grafana. Úsala cuando el usuario hable de K6, pruebas de carga, estrés, rendimiento, latencia, throughput, cuántos usuarios aguanta, Grafana u observabilidad. | EN: Design and run load and performance tests with K6, and visualize results in Grafana — smoke, load, stress and soak scenarios, thresholds as pass/fail criteria, metrics and percentiles, Prometheus or InfluxDB output and Grafana dashboards. Use when the user mentions K6, load testing, stress testing, performance, latency, throughput, how many users it can handle, Grafana or observability.
 metadata:
   version: "1.0"
   author: sistemas@igb.network

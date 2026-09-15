@@ -1,6 +1,10 @@
 # Skills de IGB para Claude Code
 
+*[English version](README.en.md)*
+
 Cinco skills que hacen que [Claude Code](https://claude.com/claude-code) trabaje con criterio de proyecto empresarial en lugar de generar plantillas. Escritas en español y agnósticas de stack.
+
+Se activan **igual en español que en inglés**: cada skill se anuncia en los dos idiomas, así que funcionan tanto con "quiero crear un proyecto nuevo" como con "I want to start a new project". Las instrucciones internas están en español.
 
 La principal, `nuevo-proyecto`, **no empieza a escribir código: empieza preguntando**. Interroga sobre alcance, usuarios, datos personales, pagos, copias de seguridad y mantenimiento, cuestiona las respuestas vagas, y resume las decisiones para que las confirmes antes de crear nada.
 

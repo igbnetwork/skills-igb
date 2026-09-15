@@ -1,6 +1,6 @@
 ---
 name: contenedores
-description: Contenerizar un proyecto con Docker y servirlo detrás de NGINX — Dockerfile multi-stage, docker-compose para el entorno local, configuración de NGINX como reverse proxy o como servidor de una SPA, healthchecks y gestión de secretos. Úsala cuando el usuario hable de dockerizar, contenedores, Dockerfile, docker-compose, NGINX, reverse proxy, servir una SPA en producción o preparar una imagen para desplegar.
+description: Contenerizar un proyecto con Docker y servirlo detrás de NGINX — Dockerfile multi-stage, docker-compose para el entorno local, NGINX como reverse proxy o como servidor de una SPA, healthchecks y gestión de secretos. Úsala cuando el usuario hable de dockerizar, contenedores, Dockerfile, docker-compose, NGINX, reverse proxy, servir una SPA en producción o preparar una imagen para desplegar. | EN: Containerize a project with Docker and serve it behind NGINX — multi-stage Dockerfile, docker-compose for local development, NGINX as reverse proxy or SPA server, healthchecks and secret handling. Use when the user mentions Docker, containers, Dockerfile, docker-compose, NGINX, reverse proxy, serving a SPA in production, or building an image to deploy.
 metadata:
   version: "1.0"
   author: sistemas@igb.network

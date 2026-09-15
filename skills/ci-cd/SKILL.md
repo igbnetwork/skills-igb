@@ -1,6 +1,6 @@
 ---
 name: ci-cd
-description: Montar o arreglar un pipeline de integración y despliegue continuo — lint, tests, build, escaneo de calidad y seguridad, y despliegue por entornos. Agnóstico de plataforma: GitHub Actions, GitLab CI, Jenkins u otra, y de destino: Render, Vercel, AWS, VPS. Úsala cuando el usuario hable de CI, CD, pipeline, workflow, GitHub Actions, despliegue automático, entornos de staging/producción o de automatizar el paso a producción.
+description: Montar o arreglar un pipeline de integración y despliegue continuo — lint, tests, build, escaneo de calidad y seguridad, y despliegue por entornos. Agnóstico de plataforma (GitHub Actions, GitLab CI, Jenkins) y de destino (Render, Vercel, AWS, VPS). Úsala cuando el usuario hable de CI, CD, pipeline, workflow, despliegue automático, entornos de staging y producción, o automatizar el paso a producción. | EN: Set up or fix a continuous integration and delivery pipeline — lint, tests, build, quality and security scanning, and environment-based deployment. Platform-agnostic (GitHub Actions, GitLab CI, Jenkins) and target-agnostic (Render, Vercel, AWS, VPS). Use when the user mentions CI, CD, pipeline, workflow, automated deployment, staging and production environments, or shipping to production automatically.
 metadata:
   version: "1.0"
   author: sistemas@igb.network

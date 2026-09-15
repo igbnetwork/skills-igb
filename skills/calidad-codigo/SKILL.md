@@ -1,6 +1,6 @@
 ---
 name: calidad-codigo
-description: Configurar y explotar análisis estático de calidad y seguridad con SonarQube o SonarCloud — sonar-project.properties, quality gates, cobertura de tests conectada al análisis, integración en el pipeline y lectura de los resultados para priorizar deuda técnica. Úsala cuando el usuario hable de SonarQube, SonarCloud, quality gate, análisis estático, cobertura, deuda técnica, code smells o vulnerabilidades en el código.
+description: Configurar y explotar análisis estático de calidad y seguridad con SonarQube o SonarCloud — sonar-project.properties, quality gates, cobertura de tests conectada al análisis, integración en el pipeline y lectura de resultados para priorizar deuda técnica. Úsala cuando el usuario hable de SonarQube, SonarCloud, quality gate, análisis estático, cobertura, deuda técnica, code smells o vulnerabilidades en el código. | EN: Configure and exploit static quality and security analysis with SonarQube or SonarCloud — sonar-project.properties, quality gates, test coverage wired into the analysis, pipeline integration, and reading results to prioritize technical debt. Use when the user mentions SonarQube, SonarCloud, quality gate, static analysis, code coverage, technical debt, code smells or code vulnerabilities.
 metadata:
   version: "1.0"
   author: sistemas@igb.network
