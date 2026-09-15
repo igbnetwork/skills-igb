@@ -149,7 +149,15 @@ Copia las plantillas de `references/plantillas.md` y **rellénalas con los datos
 
 ## Paso 4 — Verificar antes de commitear
 
-No declares el proyecto listo sin haber ejecutado la comprobación del stack (`npm install` + build o arranque en seco). Si algo falla:
+No declares el proyecto listo sin haber ejecutado la comprobación del stack. Por orden de fuerza, ejecuta la más alta que el proyecto permita:
+
+1. **Los tests** (`npm test`, `pytest`, `cargo test`…). Es la única que demuestra que el código *hace* algo.
+2. **El build de producción**, si no hay tests todavía.
+3. **Una comprobación de sintaxis** (`node --check`, `py_compile`) como último recurso. Es la más débil: un proyecto la pasa y puede estar roto de todas formas.
+
+Si te quedas en el nivel 3, **dilo explícitamente** — "solo verifiqué sintaxis" — en lugar de dar el proyecto por comprobado.
+
+Si algo falla:
 
 - **Arréglalo** si es trivial (una dependencia que falta, un script mal escrito).
 - **Repórtalo tal cual** si no lo es. No ocultes un build roto detrás de un commit inicial verde.

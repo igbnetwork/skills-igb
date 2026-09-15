@@ -39,10 +39,9 @@ src/app/
 Referencia viva en la casa: `IGB-NETWORK/BackendNetworkIGB/api`.
 
 ```bash
-mkdir -p <nombre>/src/{routes,controllers,models,middleware,config,utils}
+mkdir -p <nombre>/src/{routes,controllers,models,middleware,config,utils} <nombre>/src/__tests__
 cd <nombre> && npm init -y
 npm i express mongoose dotenv cors helmet
-npm i -D nodemon
 ```
 
 `package.json` con `"type": "module"` y:
@@ -50,9 +49,14 @@ npm i -D nodemon
 ```json
 "scripts": {
   "start": "node src/server.js",
-  "dev": "nodemon src/server.js"
+  "dev":   "node --watch src/server.js",
+  "test":  "node --test"
 }
 ```
+
+Node 22 trae `--watch` y un runner de tests integrados: no hace falta `nodemon` ni instalar un framework de tests.
+
+**`"test": "node --test"`, sin ruta.** Pasarle un directorio (`node --test src/__tests__/`) falla con `Cannot find module`: Node interpreta el argumento como un módulo a ejecutar, no como una carpeta a explorar. Sin argumentos, descubre solo los ficheros `*.test.js` del proyecto.
 
 Reparto de responsabilidades:
 
@@ -76,7 +80,22 @@ CORS_ORIGIN=http://localhost:4200
 
 `JWT_SECRET` y `MONGODB_URI` **nunca** con valor real en `.env.example` ni en el repo.
 
-**Verificación:** `npm install && node --check src/server.js`
+### Tests desde el primer día
+
+El punto 6 de «Nivel empresarial» exige una forma automática de detectar que algo se rompió, así que la API nace con tests. La clave es que **no dependan de una base de datos**: si la necesitan, no se pueden ejecutar en CI ni en una máquina recién clonada, y acaban abandonados.
+
+Para conseguirlo, separa la construcción de la app de su arranque:
+
+- `src/app.js` exporta `crearApp()`, que monta Express y devuelve la app **sin escuchar ni conectar a Mongo**.
+- `src/server.js` conecta a Mongo y llama a `crearApp().listen(...)`.
+
+Así los tests importan `crearApp()`, lo levantan en el **puerto 0** (el sistema asigna uno libre, y no chocan con un servidor de desarrollo ya arrancado) y comprueban lo que no necesita datos: que una ruta inexistente devuelve 404 en JSON, que una entrada inválida devuelve 400, que las cabeceras de seguridad están, y que `/health` responde 503 mientras no haya base de datos.
+
+Cuatro tests así bastan para arrancar. Los que sí necesiten Mongo van aparte, en un script propio, y nunca contra la base de datos real.
+
+**Verificación:** `npm install && npm test`
+
+Comprobar solo la sintaxis (`node --check`) no basta: un proyecto puede pasarlo y estar roto. Si por lo que sea aún no hay tests, dilo explícitamente en vez de dar el proyecto por verificado.
 
 ---
 
