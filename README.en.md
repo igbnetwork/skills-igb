@@ -21,6 +21,23 @@ Update later with:
 claude plugin marketplace update skills-igb
 ```
 
+### With npm
+
+Without cloning anything:
+
+```bash
+npx skills-igb
+```
+
+Or install it permanently, so you can update with one command:
+
+```bash
+npm install -g skills-igb
+skills-igb            # re-run it after each `npm update -g skills-igb`
+```
+
+If you already had a version installed, the previous one is kept as `<skill>.anterior.<timestamp>` before being replaced: a skill you customized is never overwritten blindly.
+
 ### Copying the skills manually
 
 ```bash
