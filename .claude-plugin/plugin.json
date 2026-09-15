@@ -1,6 +1,6 @@
 {
   "name": "skills-igb",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "Skills de Claude Code para arrancar y operar proyectos con criterio empresarial: interrogatorio de requisitos antes de escribir código, contenedores, CI/CD, calidad de código y pruebas de carga. En español y agnósticas de stack.",
   "author": {
     "name": "Sistemas IGB",

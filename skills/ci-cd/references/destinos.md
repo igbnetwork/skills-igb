@@ -28,7 +28,26 @@ Despliega solo desde git. El pipeline **no sube artefactos**: valida, y Render c
 
 ## VPS por SSH
 
-- Clave SSH privada como secreto del CI; **nunca** con contraseña interactiva.
+### La clave del pipeline es suya, no de una persona
+
+**Nunca uses para el CI la clave SSH personal de alguien.** Es el atajo habitual y trae tres problemas que solo se ven cuando ya duelen:
+
+- **No se puede revocar sin daño colateral.** Si esa clave se filtra hay que borrarla del servidor, y con ella se queda fuera la persona que la usa a diario.
+- **Da más acceso del necesario.** La clave de un administrador suele poder hacer de todo; el pipeline solo necesita escribir en un directorio y recargar un servicio.
+- **Borra la trazabilidad.** En los logs todo aparece hecho por la misma persona, se despliegue desde el CI o a mano.
+
+Lo correcto es una clave dedicada al despliegue:
+
+1. **Genérala aparte**, solo para el pipeline (`ssh-keygen -t ed25519 -C "deploy-<proyecto>-ci"`).
+2. **Sin passphrase**, porque un proceso automático no puede teclearla — y precisamente por eso su alcance debe ser mínimo. (Las claves **personales** sí deben llevar passphrase: si el portátil se pierde, es lo único que separa al ladrón del servidor.)
+3. **Usuario propio y permisos mínimos** en el servidor: acceso al directorio de despliegue y a recargar su servicio, nada más. Nada de `sudo` sin restringir.
+4. **Restringe la clave en `authorized_keys`** con `from="<ip>"`, y `command=` si el despliegue es un único script.
+5. **Una clave por proyecto y por entorno.** Así revocar la de staging no tumba producción.
+6. **Documenta cuándo toca rotarla** y quién puede hacerlo. Una clave que nadie sabe rotar es una clave eterna.
+
+La privada va como secreto del CI; la pública, en el `authorized_keys` del usuario de despliegue.
+
+- Clave SSH del pipeline como secreto del CI; **nunca** con contraseña interactiva.
 - Despliegue por `rsync` del build, y recarga del servicio (`systemctl reload <servicio>` o `pm2 reload`).
 - Deja siempre la versión anterior en el servidor para poder revertir: despliega a un directorio nuevo y cambia un enlace simbólico. Revertir es entonces mover el enlace, no volver a construir.
 - Fija `known_hosts` en el pipeline; desactivar la verificación del host abre la puerta a un ataque de intermediario.
@@ -63,7 +82,21 @@ Inconveniente serio: **el runner ejecuta el código de cualquier pull request**.
 
 ### c) Abrir el servidor a internet
 
-La peor, y a menudo la que se elige por inercia. Si se hace, que sea con el puerto SSH restringido por grupo de seguridad a rangos de IP concretos, nunca a `0.0.0.0/0`. **Si ya accedéis por VPN, abrir SSH al mundo solo añade superficie de ataque sin aportar nada**: merece la pena revisar el grupo de seguridad y cerrarlo.
+La peor, y a menudo la que se elige por inercia. Si se hace, que sea con el puerto SSH restringido por grupo de seguridad a rangos de IP concretos, nunca a `0.0.0.0/0`. **Si ya accedéis por VPN, abrir SSH al mundo solo añade superficie de ataque sin aportar nada.**
+
+### Revisa qué puertos están realmente abiertos
+
+Al tocar el despliegue, echa un vistazo a las reglas de entrada del servidor y contrástalas con lo que hace falta de verdad:
+
+| Puerto | Quién debería alcanzarlo |
+|---|---|
+| 22 (SSH) | Solo la VPN o IPs concretas. Nunca todo internet |
+| 80, 443 | Todo internet, si el servicio es público. El 80 suele seguir haciendo falta para renovar el certificado |
+| **Puertos de aplicación** (3000, 8080, 8777…) | **Casi nunca todo internet** |
+
+El descuido típico es el último: una aplicación levantada en un puerto no estándar y abierta a `0.0.0.0/0` mientras se probaba, que se queda así. Suele hablar HTTP en claro y saltarse el proxy, de modo que no tiene TLS, ni límite de tasa, ni los registros del resto del sistema.
+
+Las dos salidas buenas: ponerla detrás de NGINX en el 443 (ver la skill `contenedores`) o, si solo la usa gente de dentro, restringir el puerto al rango de la VPN. Señálalo al usuario cuando lo veas; es barato de arreglar y no se arregla solo.
 
 ---
 
