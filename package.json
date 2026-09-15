@@ -1,6 +1,6 @@
 {
   "name": "skills-igb",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "description": "Cinco skills para Claude Code que arrancan y operan proyectos con criterio empresarial: interrogatorio de requisitos antes de escribir código, Docker + NGINX, CI/CD, SonarQube y pruebas de carga con K6. En español, agnósticas de stack.",
   "type": "module",
   "bin": {

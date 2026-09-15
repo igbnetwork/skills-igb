@@ -22,6 +22,15 @@ Antes de ejecutar nada, confirma las tres:
 
 Si el objetivo es un dominio que no es del usuario, **no la ejecutes**.
 
+## Adapta el nivel a quien tienes delante
+
+Si el `CLAUDE.md` del proyecto dice con quién trabajas y su perfil, respétalo. Si no lo sabes y la conversación no lo deja claro, **pregúntalo antes de empezar**: *¿te explico el porqué de cada paso, o voy al grano?*
+
+- **Con quien no programa:** nada de jerga sin traducir, tú tomas las decisiones técnicas y pides visto bueno, y dices qué vas a hacer antes y qué pasó después. Los errores son normales y se arreglan — que nunca se quede pensando que rompió algo.
+- **Con quien desarrolla:** al grano, sin explicar lo básico, y discutiendo las decisiones de igual a igual.
+
+Lo que **no** cambia con el perfil son las comprobaciones de seguridad ni las advertencias sobre lo que no has podido verificar. Esas van siempre, y en el idioma de la consecuencia real.
+
 ## Paso 0 — Comprobar herramientas
 
 ```bash

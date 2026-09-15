@@ -1,6 +1,6 @@
 ---
 name: nuevo-proyecto
-description: Arranca un proyecto nuevo de cero con calidad empresarial, en cualquier stack. Antes de escribir nada interroga y cuestiona los requisitos — alcance, usuarios, datos personales, pagos, copias de seguridad, mantenimiento — y traduce la jerga para quien no programa. Después monta estructura, convenciones y tooling: git, .gitignore, README, CLAUDE.md, .claude/settings.json y commit inicial. Trae recetas para Angular, API Node/Express + MongoDB, Vite, sitio estático y Python, más un procedimiento genérico para cualquier otro lenguaje o framework. Úsala cuando el usuario pida crear, arrancar, inicializar o montar un proyecto, repo o servicio nuevo, o normalizar un directorio sin git ni convenciones. | EN: Bootstrap a new project from scratch to enterprise standards, in any stack. Interrogates and challenges requirements before writing code — scope, users, personal data, payments, backups, maintenance — and translates jargon for non-programmers. Then sets up structure, conventions and tooling. Use when the user asks to create, start, scaffold, bootstrap or initialize a new project, repo or service, or to normalize a directory that has no git or conventions.
+description: Arranca un proyecto nuevo de cero con calidad empresarial, en cualquier stack. Primero pregunta con quién trabaja y su nivel con la programación, y adapta a eso cuánto explica y qué decisiones toma por su cuenta. Después interroga y cuestiona los requisitos — alcance, usuarios, datos personales, pagos, copias de seguridad, mantenimiento — y traduce la jerga para quien no programa. Después monta estructura, convenciones y tooling: git, .gitignore, README, CLAUDE.md, .claude/settings.json y commit inicial. Trae recetas para Angular, API Node/Express + MongoDB, Vite, sitio estático y Python, más un procedimiento genérico para cualquier otro lenguaje o framework. Úsala cuando el usuario pida crear, arrancar, inicializar o montar un proyecto, repo o servicio nuevo, o normalizar un directorio sin git ni convenciones. | EN: Bootstrap a new project from scratch to enterprise standards, in any stack. First asks who it is working with and their programming level, adapting how much it explains and which decisions it makes on its own. Then interrogates and challenges requirements before writing code — scope, users, personal data, payments, backups, maintenance — and translates jargon for non-programmers. Then sets up structure, conventions and tooling. Use when the user asks to create, start, scaffold, bootstrap or initialize a new project, repo or service, or to normalize a directory that has no git or conventions.
 metadata:
   version: "2.0"
   author: sistemas@igb.network
@@ -12,11 +12,40 @@ Deja un proyecto nuevo listo para trabajar: estructura, git, documentación viva
 
 ## Regla de oro
 
-**No inventes el stack.** Si el usuario no lo dice, pregúntalo antes de crear nada (pregunta 2 del paso 0). Crear un scaffolding equivocado cuesta más que una pregunta.
+**No inventes el stack.** Si el usuario no lo dice, pregúntalo antes de crear nada (pregunta 2 del Paso 1). Crear un scaffolding equivocado cuesta más que una pregunta.
 
 **El stack lo elige el usuario, no esta skill.** `references/stacks.md` trae recetas ya escritas para los stacks que más se repiten aquí, pero son atajos, no un menú cerrado. Go, Rust, Laravel, Next.js, .NET, FastAPI, Flutter, un monorepo, lo que haga falta: se soporta igual, siguiendo el procedimiento genérico de ese mismo fichero. Nunca empujes al usuario hacia un stack conocido porque tengas la receta escrita.
 
-## Paso 0 — Interrogatorio
+## Paso 0 — ¿Con quién trabajo?
+
+**Antes de cualquier otra cosa, pregunta con quién estás hablando.** Todo lo que viene después —cuánto explicas, qué decisiones delegas, si ofreces el stack o lo recomiendas— depende de esta respuesta. Es una sola pregunta y cambia la sesión entera:
+
+> ¿Cómo te llamas, y cómo te describirías con la programación? Elige lo que más se parezca:
+> **(a)** no programo · **(b)** estoy aprendiendo o me defiendo · **(c)** soy desarrollador
+
+Si el usuario ya se ha identificado en la conversación, o el `CLAUDE.md` del directorio lo dice, **no lo preguntes otra vez**: dilo en voz alta ("trabajo contigo como perfil (c), corrígeme si no") y sigue.
+
+Usa su nombre durante la sesión. No es adorno: un aviso que empieza por el nombre de quien lee —"<nombre>, esto que decidas ahora no se podrá cambiar fácilmente después"— se atiende de otra forma que un párrafo impersonal.
+
+### Cómo cambia tu forma de trabajar
+
+| | **(a) No programa** | **(b) Aprendiendo** | **(c) Desarrollador** |
+|---|---|---|---|
+| **Jerga** | Ninguna sin traducir, siempre con un ejemplo | Úsala y explícala la primera vez | Normal, sin explicar lo básico |
+| **Decisiones técnicas** | Las tomas tú y pides visto bueno | Propones dos opciones con tu recomendación | Las discutes de igual a igual |
+| **El stack** | No se lo preguntes: recomiéndalo y explica por qué | Recomienda y explica la alternativa descartada | Pregunta directamente cuál quiere |
+| **Cada paso** | Di qué vas a hacer *antes* y qué pasó *después* | Explica el porqué, no solo el qué | Ejecuta y resume al final |
+| **Los innegociables** | Explícalos por su consecuencia concreta | Explícalos por su motivo técnico | Menciónalos y sigue |
+| **Errores** | "Esto es normal y se arregla así" — nunca dejarle pensando que rompió algo | Enseña a leer el mensaje de error | Pega el error y sigue |
+| **Ritmo** | Un bloque de preguntas cada vez, esperando respuesta | Bloques, con contexto | Todo de golpe si ya tienes datos |
+
+**Perfil (a) — lo que más importa.** Quien no programa no teme equivocarse en la respuesta: teme **no entender la pregunta** y quedar en evidencia. Así que nunca preguntes algo sin decir para qué sirve, ofrece siempre una opción por defecto para que le baste con asentir, y si contesta "lo que tú veas", no lo tomes como desinterés — tómalo como que la pregunta estaba mal formulada y hazla más concreta.
+
+**Perfil (c) — el riesgo opuesto.** No le expliques lo que ya sabe; es la forma más rápida de que deje de leerte. Pero **el Bloque B se hace igual**: un ingeniero también arranca proyectos sin pensar en copias de seguridad ni en quién mantendrá esto en un año.
+
+Anota el perfil en el `CLAUDE.md` del proyecto, para que en las siguientes sesiones no haya que volver a preguntarlo.
+
+## Paso 1 — Interrogatorio
 
 **No eres un generador de plantillas: eres el arquitecto que hace las preguntas incómodas antes de que cuesten caras.** Muchas de estas decisiones son casi imposibles de revertir a los seis meses. Quince minutos de preguntas ahora ahorran semanas después.
 
@@ -83,6 +112,7 @@ Devuelve un **resumen de decisiones** y espera confirmación explícita:
 
 ```
 Voy a crear <nombre> en <ruta>.
+  Trabajo con ....... <nombre> (perfil <a|b|c>)
   Qué hace .......... <dos frases>
   Usuarios .......... <quién, cuántos>
   Versión uno ....... <lo mínimo que debe funcionar>
@@ -112,7 +142,7 @@ Estas siete cosas van **siempre**, aunque el proyecto parezca pequeño y aunque 
 
 Cuando el interlocutor no es programador, **explica el porqué de cada una con su consecuencia concreta**, no como una regla que hay que obedecer. "Sin copias de seguridad, si el servidor falla perdemos los contratos de los clientes y no hay forma de recuperarlos" se entiende; "hay que tener backups" no convence a nadie.
 
-## Paso 1 — Verificar el terreno
+## Paso 2 — Verificar el terreno
 
 Antes de escribir un solo fichero:
 
@@ -126,7 +156,7 @@ node -v && npm -v       # toolchain disponible
 - Si **ya es un repo git**: no ejecutes `git init`. Reutiliza el repo existente.
 - Nunca sobrescribas un fichero existente. Si `README.md` ya está, **muestra la diferencia y pregunta** antes de tocarlo.
 
-## Paso 2 — Estructura y tooling del stack
+## Paso 3 — Estructura y tooling del stack
 
 Lee **solo la sección del stack elegido** en `references/stacks.md` — o la sección **«Cualquier otro stack»** si no tiene receta propia.
 
@@ -138,7 +168,7 @@ Criterios comunes, valgan para el stack que valgan:
 - Nada de dependencias, artefactos de build ni `.env` en git — lo cubre el `.gitignore` del paso 3.
 - Secretos **siempre** en variables de entorno, nunca en el código, más un `.env.example` versionado con las mismas claves vacías.
 
-## Paso 3 — Ficheros base (todos los stacks)
+## Paso 4 — Ficheros base (todos los stacks)
 
 Copia las plantillas de `references/plantillas.md` y **rellénalas con los datos reales del proyecto**. No las pegues con los marcadores `<...>` sin sustituir.
 
@@ -154,7 +184,7 @@ Copia las plantillas de `references/plantillas.md` y **rellénalas con los datos
 
 `CLAUDE.md` es el fichero que más rinde a largo plazo: escríbelo con comandos que **has verificado que funcionan**, no con los que supones.
 
-## Paso 4 — Verificar antes de commitear
+## Paso 5 — Verificar antes de commitear
 
 No declares el proyecto listo sin haber ejecutado la comprobación del stack. Por orden de fuerza, ejecuta la más alta que el proyecto permita:
 
@@ -169,7 +199,7 @@ Si algo falla:
 - **Arréglalo** si es trivial (una dependencia que falta, un script mal escrito).
 - **Repórtalo tal cual** si no lo es. No ocultes un build roto detrás de un commit inicial verde.
 
-## Paso 5 — Commit inicial
+## Paso 6 — Commit inicial
 
 ```bash
 git -C <ruta> init -b main     # solo si aún no es repo
@@ -193,7 +223,7 @@ Añade las líneas de atribución de Claude Code si la sesión las tiene configu
 
 **No hagas `git push`, no crees remoto y no despliegues** salvo que el usuario lo pida explícitamente.
 
-## Paso 6 — Cerrar
+## Paso 7 — Cerrar
 
 Resume en pocas líneas:
 

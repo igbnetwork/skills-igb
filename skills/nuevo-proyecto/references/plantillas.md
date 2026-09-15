@@ -136,6 +136,11 @@ El fichero de mayor rendimiento a largo plazo. Solo comandos **verificados**, na
 - `src/<carpeta>/` — <responsabilidad>
 - `src/<carpeta>/` — <responsabilidad>
 
+## Con quién se trabaja
+
+- <Nombre> — perfil <(a) no programa | (b) aprendiendo | (c) desarrollador>.
+- Ajusta el nivel de explicación a ese perfil. Si entra otra persona, pregúntaselo y anótalo aquí.
+
 ## Convenciones
 
 - Documentación y mensajes de commit en español.
