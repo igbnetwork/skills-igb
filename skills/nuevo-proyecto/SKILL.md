@@ -63,7 +63,13 @@ Hazlo con respeto y sin condescendencia: quien responde entiende su negocio mejo
 11. **Stack** → pregunta abierta, no una lista cerrada. Si nombra uno con receta en `references/stacks.md` (`angular`, `api-node`, `vite`, `estatico`, `python`), úsala; si no, aplica el procedimiento genérico de ese fichero. **Si quien responde no es programador, no le pidas que elija el stack: recomiéndalo tú a partir de los bloques A y B, explica en una frase por qué, y pide su visto bueno.**
 12. **Ubicación** → por defecto, un directorio `<nombre>` junto a los demás proyectos del usuario (normalmente el directorio actual o su carpeta habitual de trabajo). Confirma si va dentro de un monorepo existente.
 13. **Despliegue** → dónde va a vivir: Render, Vercel, VPS, AWS, o aún ninguno. Si no se sabe, `ninguno` es una respuesta válida y el proyecto se prepara para decidirlo después.
-14. **Entornos** → ¿hará falta un entorno de pruebas separado del real? Para cualquier cosa con usuarios de verdad, la respuesta es sí.
+14. **¿Cómo se llega a ese servidor?** Pregunta obligatoria en cuanto el destino sea un servidor propio (VPS, EC2, máquina de oficina). Tres respuestas posibles, y cada una cambia el despliegue entero:
+    - **Público en internet** — cualquiera puede alcanzarlo; el despliegue automático es directo.
+    - **Solo por VPN** (Tailscale, WireGuard, VPN corporativa) — el servidor **no es alcanzable desde fuera**, así que un runner de CI en la nube no puede desplegar sin unirse antes a esa red. Hay que resolverlo explícitamente.
+    - **Solo desde la red interna** — el despliegue automático desde la nube directamente no es viable; hace falta un runner dentro.
+
+    No la des por supuesta: es el error que produce pipelines que fallan siempre sin que se entienda por qué. Cuando toque automatizar el despliegue, la skill `ci-cd` cubre cómo resolver cada caso.
+15. **Entornos** → ¿hará falta un entorno de pruebas separado del real? Para cualquier cosa con usuarios de verdad, la respuesta es sí.
 
 ### Regla de bloqueo
 
@@ -83,6 +89,7 @@ Voy a crear <nombre> en <ruta>.
   Datos sensibles ... <sí/no — y qué implica>
   Stack ............. <cuál, y en una frase por qué>
   Despliegue ........ <dónde, o pendiente>
+  Acceso al servidor  <público | solo VPN | solo red interna>
   Entornos .......... <uno o dos>
   NO incluye ........ <exclusiones confirmadas>
 Supuestos que he asumido: <lista, o "ninguno">

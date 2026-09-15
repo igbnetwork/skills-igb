@@ -12,7 +12,9 @@ Automatiza el camino de commit a producción, con puertas de calidad reales entr
 
 ## Estado de partida
 
-**Hoy no hay ningún pipeline en estos proyectos** y no hay plataforma de CI elegida. No des por hecho GitHub Actions: pregunta. Tampoco está instalado `gh`, así que no podrás crear repos ni disparar workflows desde la terminal.
+No des por hecho GitHub Actions: pregunta cuál usa el equipo. Y comprueba si `gh` está instalado antes de proponer comandos que lo usen.
+
+**Antes de escribir el job de deploy, averigua si el destino es alcanzable desde internet.** Un servidor detrás de una VPN —Tailscale, WireGuard, VPN corporativa— o en una red interna no admite un despliegue directo desde un runner en la nube, por muy correcto que sea el resto del pipeline. Es la causa más común de un CI que valida bien y despliega nunca.
 
 ## Paso 1 — Fijar las tres variables
 
@@ -20,6 +22,7 @@ Automatiza el camino de commit a producción, con puertas de calidad reales entr
 |---|---|---|
 | **Plataforma** | ¿GitHub, GitLab, Jenkins, otra? | Determina el fichero: `.github/workflows/*.yml`, `.gitlab-ci.yml`, `Jenkinsfile` |
 | **Destino** | ¿Render, Vercel, AWS, VPS, ninguno? | Determina el paso de deploy. Ver `references/destinos.md` |
+| **Alcance del destino** | Si es un servidor propio: ¿tiene IP pública abierta, o solo se llega por VPN? | Si es privado, el runner no puede alcanzarlo sin unirse antes a la red. Ver `references/destinos.md` |
 | **Disparadores** | ¿Qué ramas y eventos? | Lo normal: PR → validar; push a `main` → validar y desplegar |
 
 Si el usuario no sabe la plataforma, **recomienda GitHub Actions** si el código ya está en GitHub: es lo que menos infraestructura pide. Pero que la elección sea suya.
