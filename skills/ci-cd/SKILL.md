@@ -1,6 +1,6 @@
 ---
 name: ci-cd
-description: Montar o arreglar un pipeline de integración y despliegue continuo — lint, tests, build, escaneo de calidad y seguridad, y despliegue por entornos. Agnóstico de plataforma (GitHub Actions, GitLab CI, Jenkins) y de destino (Render, Vercel, AWS, VPS). Úsala cuando el usuario hable de CI, CD, pipeline, workflow, despliegue automático, entornos de staging y producción, o automatizar el paso a producción. | EN: Set up or fix a continuous integration and delivery pipeline — lint, tests, build, quality and security scanning, and environment-based deployment. Platform-agnostic (GitHub Actions, GitLab CI, Jenkins) and target-agnostic (Render, Vercel, AWS, VPS). Use when the user mentions CI, CD, pipeline, workflow, automated deployment, staging and production environments, or shipping to production automatically.
+description: Montar o arreglar un pipeline de integración y despliegue continuo — lint, tests, build, escaneo de calidad y seguridad, y despliegue por entornos. Agnóstico de plataforma (GitHub Actions, GitLab CI, Jenkins) y de destino (Render, Vercel, AWS, VPS). Úsala cuando el usuario hable de CI, CD, pipeline, workflow, despliegue automático, entornos de staging y producción, o automatizar el paso a producción. | EN: Set up or fix a continuous integration and delivery pipeline — lint, tests, build, quality and security scanning, and environment-based deployment. Platform-agnostic (GitHub Actions, GitLab CI, Jenkins) and target-agnostic (Render, Vercel, AWS, VPS). Also covers deploying to a server that is not reachable from the internet: VPN, bastion or jump host, SSM Session Manager, and self-hosted runners. Use when the user mentions CI, CD, pipeline, workflow, automated deployment, staging and production environments, or shipping to production automatically.
 metadata:
   version: "1.0"
   author: sistemas@igb.network
@@ -43,7 +43,7 @@ Lo que **no** cambia con el perfil son las comprobaciones de seguridad ni las ad
 |---|---|---|
 | **Plataforma** | ¿GitHub, GitLab, Jenkins, otra? | Determina el fichero: `.github/workflows/*.yml`, `.gitlab-ci.yml`, `Jenkinsfile` |
 | **Destino** | ¿Render, Vercel, AWS, VPS, ninguno? | Determina el paso de deploy. Ver `references/destinos.md` |
-| **Alcance del destino** | Si es un servidor propio: ¿tiene IP pública abierta, o solo se llega por VPN? | Si es privado, el runner no puede alcanzarlo sin unirse antes a la red. Ver `references/destinos.md` |
+| **Alcance del destino** | Si es un servidor propio: ¿tiene IP pública abierta, o se llega por VPN o por un bastión? | Si es privado, el runner no puede alcanzarlo sin unirse antes a la red. Ver `references/destinos.md` |
 | **Disparadores** | ¿Qué ramas y eventos? | Lo normal: PR → validar; push a `main` → validar y desplegar |
 
 Si el usuario no sabe la plataforma, **recomienda GitHub Actions** si el código ya está en GitHub: es lo que menos infraestructura pide. Pero que la elección sea suya.

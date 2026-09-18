@@ -74,13 +74,35 @@ En el YAML, el paso de unirse a la VPN va **antes** del de desplegar, y luego se
 
 **No copies de memoria la versión de la acción ni sus parámetros**: consulta la documentación oficial de Tailscale para la versión vigente y fíjala explícitamente. Lo mismo para WireGuard o una VPN corporativa, donde normalmente habrá que levantar el túnel a mano en un paso previo.
 
-### b) Un runner dentro de la propia red
+### b) Salto por bastión (jump host)
+
+Un único servidor expuesto y endurecido; todo lo demás solo es alcanzable desde él. El CI entra al bastión y salta al destino:
+
+```bash
+ssh -J usuario@bastion usuario@destino-privado
+```
+
+En el pipeline se configura con `ProxyJump` en `~/.ssh/config`, y las claves —la del bastión y la del destino— van como secretos.
+
+**Lo que cuesta, y conviene decirlo antes de montarlo:**
+
+- **Es SSH público.** Recibe intentos de fuerza bruta las 24 horas desde el primer día. Sin restringir el origen por IP, estás manteniendo una cerradura bajo ataque permanente.
+- **Es un punto único de fallo.** Si cae, nadie entra a nada.
+- **Es el objetivo más valioso de tu red.** Desde él se llega a todo, así que quien lo comprometa lo compromete todo.
+
+Si aun así lo montas: solo autenticación por clave (contraseñas desactivadas), origen restringido a IPs conocidas, el mínimo software instalado, parcheado al día, y registro de sesiones para saber quién entró y qué hizo.
+
+**En AWS existe una opción mejor que elimina el bastión: SSM Session Manager.** Se llega a la instancia **sin ningún puerto abierto** —ni siquiera el 22— porque es la máquina la que sale hacia el servicio. El acceso se controla con IAM en vez de con claves repartidas, y las sesiones quedan registradas. Necesita el agente de SSM (ya viene en las AMIs recientes) y un rol de instancia con la política correspondiente. Para un pipeline, el equivalente del salto es `aws ssm start-session` con autenticación OIDC, sin ninguna clave SSH de larga vida.
+
+**Y una recomendación que ahorra disgustos: no montes un bastión "además de" una VPN.** Si ya tenéis Tailscale, WireGuard o similar, el bastión vuelve a abrir al público exactamente la superficie que la VPN os había quitado. Elegid uno de los dos, y si ya tenéis VPN funcionando, ese es el que os vale.
+
+### c) Un runner dentro de la propia red
 
 Instalar un *self-hosted runner* en el servidor de destino o en otra máquina de la red. Ventaja: no hace falta abrir nada ni gestionar credenciales de VPN, porque el runner sale hacia fuera en lugar de recibir conexiones.
 
 Inconveniente serio: **el runner ejecuta el código de cualquier pull request**. En un repositorio público eso es una vía directa a ejecutar código arbitrario dentro de tu red. Úsalo solo en repositorios privados, y aun así limita qué workflows pueden correr en él.
 
-### c) Abrir el servidor a internet
+### d) Abrir el servidor a internet
 
 La peor, y a menudo la que se elige por inercia. Si se hace, que sea con el puerto SSH restringido por grupo de seguridad a rangos de IP concretos, nunca a `0.0.0.0/0`. **Si ya accedéis por VPN, abrir SSH al mundo solo añade superficie de ataque sin aportar nada.**
 
