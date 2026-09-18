@@ -2,7 +2,7 @@
 
 *[English version](README.en.md)*
 
-Diez skills que hacen que [Claude Code](https://claude.com/claude-code) trabaje con criterio de proyecto empresarial en lugar de generar plantillas. Escritas en español y agnósticas de stack.
+Once skills que hacen que [Claude Code](https://claude.com/claude-code) trabaje con criterio de proyecto empresarial en lugar de generar plantillas. Escritas en español y agnósticas de stack.
 
 Se activan **igual en español que en inglés**: cada skill se anuncia en los dos idiomas, así que funcionan tanto con "quiero crear un proyecto nuevo" como con "I want to start a new project". Las instrucciones internas están en español.
 
@@ -58,11 +58,12 @@ Copy-Item -Recurse -Force skills\* "$HOME\.claude\skills\"
 
 Reinicia Claude Code después de instalar. En cualquiera de las dos vías quedan en **ámbito global**: valen en todos tus proyectos, no hay que repetir la instalación en cada uno.
 
-## Las diez skills
+## Las once skills
 
 | Skill | Qué hace | Cómo se activa |
 |---|---|---|
 | **nuevo-proyecto** | Arranca un proyecto desde cero: interroga los requisitos, elige y justifica el stack, y deja git, documentación, convenciones y commit inicial listos. | `/nuevo-proyecto` o "quiero crear un proyecto nuevo" |
+| **auditar-proyecto** | Coge un proyecto que ya existe y dice en qué estado está, por orden de urgencia. No toca nada. | "audita esto", "¿en qué estado está?", "qué le falta" |
 | **git-flujo** | Ramas, commits, pull requests, fusiones y conflictos. Te da los comandos para que los ejecutes tú. | "hago un PR", "merge o rebase", "tengo un conflicto" |
 | **contenedores** | Empaqueta el proyecto con Docker (multi-stage) y lo sirve tras NGINX, como SPA o como reverse proxy. | "dockeriza esto", "configura NGINX" |
 | **ci-cd** | Monta el pipeline de integración y despliegue continuo. Agnóstico de plataforma y de destino. | "quiero CI/CD", "despliegue automático" |
@@ -119,6 +120,7 @@ Del mismo modo, ninguna crea repositorios remotos, despliega a producción, inst
   plugin.json         manifiesto del plugin
 skills/
   nuevo-proyecto/     SKILL.md + references/{stacks,plantillas}.md
+  auditar-proyecto/   SKILL.md
   git-flujo/          SKILL.md
   contenedores/       SKILL.md + references/{plantillas,nginx}.md
   ci-cd/              SKILL.md + references/destinos.md

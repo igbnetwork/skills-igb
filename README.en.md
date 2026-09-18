@@ -2,7 +2,7 @@
 
 *[Versión en español](README.md)*
 
-Ten skills that make [Claude Code](https://claude.com/claude-code) work to enterprise project standards instead of generating boilerplate. The instructions are written in Spanish; every skill is discoverable in both Spanish and English, so it triggers whichever language you prompt in.
+Eleven skills that make [Claude Code](https://claude.com/claude-code) work to enterprise project standards instead of generating boilerplate. The instructions are written in Spanish; every skill is discoverable in both Spanish and English, so it triggers whichever language you prompt in.
 
 The main one, `nuevo-proyecto`, **does not start writing code — it starts asking**. It interrogates scope, users, personal data, payments, backups and maintenance, challenges vague answers, and summarizes its decisions for you to confirm before creating anything.
 
@@ -54,11 +54,12 @@ Copy-Item -Recurse -Force skills\* "$HOME\.claude\skills\"
 
 Restart Claude Code afterwards. Either way they install **globally**: they work across all your projects, with no per-project setup.
 
-## The ten skills
+## The eleven skills
 
 | Skill | What it does | How to trigger it |
 |---|---|---|
 | **nuevo-proyecto** | Bootstraps a project from scratch: interrogates requirements, picks and justifies the stack, and leaves git, docs, conventions and an initial commit in place. | `/nuevo-proyecto` or "I want to start a new project" |
+| **auditar-proyecto** | Takes an existing project and reports what state it is in, ordered by urgency. Changes nothing. | "audit this", "what state is it in", "what is missing" |
 | **git-flujo** | Branches, commits, pull requests, merges and conflicts. Hands you the commands to run yourself. | "open a PR", "merge or rebase", "I have a conflict" |
 | **contenedores** | Packages the project with Docker (multi-stage) and serves it behind NGINX, as a SPA or a reverse proxy. | "dockerize this", "set up NGINX" |
 | **ci-cd** | Builds the continuous integration and delivery pipeline. Platform- and target-agnostic. | "I want CI/CD", "automated deployment" |
@@ -109,6 +110,7 @@ Likewise, none of them create remote repositories, deploy to production, install
   plugin.json         plugin manifest
 skills/
   nuevo-proyecto/     SKILL.md + references/{stacks,plantillas}.md
+  auditar-proyecto/   SKILL.md
   git-flujo/          SKILL.md
   contenedores/       SKILL.md + references/{plantillas,nginx}.md
   ci-cd/              SKILL.md + references/destinos.md
