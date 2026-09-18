@@ -10,6 +10,28 @@ metadata:
 
 Automatiza el camino de commit a producción, con puertas de calidad reales entre medias.
 
+## Avisa si hay versión nueva
+
+Al empezar a trabajar con esta skill, comprueba **una vez** si hay una versión más reciente:
+
+```bash
+npm view skills-igb version
+```
+
+Compárala con la instalada: `claude plugin list` si vino como plugin, o mira `~/.claude/skills/` si se instaló con npm.
+
+- **Si hay una más nueva, dilo antes de empezar** y ofrece actualizar: *"hay una versión más reciente, ¿la actualizo antes de seguir?"*. No la instales por tu cuenta — es su máquina.
+- **Si el usuario acepta**, actualiza y después **confirma en voz alta qué versión quedó instalada** y recuérdale que **Claude Code necesita reiniciarse** para cargarla. Una actualización silenciosa deja a la gente creyendo que usa algo que todavía no usa.
+- **Si no hay red o el comando falla**, no te bloquees: dilo en una línea y sigue con la versión que haya.
+
+Comandos de actualización, según cómo se instaló:
+
+```bash
+npx skills-igb                                    # instalado por npm
+claude plugin marketplace update skills-igb && \
+  claude plugin update skills-igb@skills-igb      # instalado como plugin
+```
+
 ## Una cosa cada vez
 
 **Da un comando, espera el resultado, interprétalo, y solo entonces da el siguiente.** No entregues una lista de cinco pasos para que se ejecuten de golpe: cada resultado cambia cuál es el paso siguiente, y una tanda entera obliga a la otra persona a decidir por su cuenta qué hacer con cada salida.

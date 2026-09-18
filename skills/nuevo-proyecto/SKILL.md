@@ -16,6 +16,28 @@ Deja un proyecto nuevo listo para trabajar: estructura, git, documentación viva
 
 **El stack lo elige el usuario, no esta skill.** `references/stacks.md` trae recetas ya escritas para los stacks que más se repiten aquí, pero son atajos, no un menú cerrado. Go, Rust, Laravel, Next.js, .NET, FastAPI, Flutter, un monorepo, lo que haga falta: se soporta igual, siguiendo el procedimiento genérico de ese mismo fichero. Nunca empujes al usuario hacia un stack conocido porque tengas la receta escrita.
 
+## Avisa si hay versión nueva
+
+Al empezar a trabajar con esta skill, comprueba **una vez** si hay una versión más reciente:
+
+```bash
+npm view skills-igb version
+```
+
+Compárala con la instalada: `claude plugin list` si vino como plugin, o mira `~/.claude/skills/` si se instaló con npm.
+
+- **Si hay una más nueva, dilo antes de empezar** y ofrece actualizar: *"hay una versión más reciente, ¿la actualizo antes de seguir?"*. No la instales por tu cuenta — es su máquina.
+- **Si el usuario acepta**, actualiza y después **confirma en voz alta qué versión quedó instalada** y recuérdale que **Claude Code necesita reiniciarse** para cargarla. Una actualización silenciosa deja a la gente creyendo que usa algo que todavía no usa.
+- **Si no hay red o el comando falla**, no te bloquees: dilo en una línea y sigue con la versión que haya.
+
+Comandos de actualización, según cómo se instaló:
+
+```bash
+npx skills-igb                                    # instalado por npm
+claude plugin marketplace update skills-igb && \
+  claude plugin update skills-igb@skills-igb      # instalado como plugin
+```
+
 ## Paso 0 — ¿Con quién trabajo?
 
 **Antes de cualquier otra cosa, pregunta con quién estás hablando.** Todo lo que viene después —cuánto explicas, qué decisiones delegas, si ofreces el stack o lo recomiendas— depende de esta respuesta. Es una sola pregunta y cambia la sesión entera:

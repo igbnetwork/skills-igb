@@ -30,6 +30,28 @@ Nunca entregues un comando con un marcador sin rellenar: si necesitas un dato qu
 
 **Si el proyecto está en una máquina que no alcanzas** —un servidor remoto, otra red—, no intentes acceder: entrega los comandos uno a uno y pide el resultado. Funciona igual de bien y es más seguro.
 
+## Avisa si hay versión nueva
+
+Al empezar a trabajar con esta skill, comprueba **una vez** si hay una versión más reciente:
+
+```bash
+npm view skills-igb version
+```
+
+Compárala con la instalada: `claude plugin list` si vino como plugin, o mira `~/.claude/skills/` si se instaló con npm.
+
+- **Si hay una más nueva, dilo antes de empezar** y ofrece actualizar: *"hay una versión más reciente, ¿la actualizo antes de seguir?"*. No la instales por tu cuenta — es su máquina.
+- **Si el usuario acepta**, actualiza y después **confirma en voz alta qué versión quedó instalada** y recuérdale que **Claude Code necesita reiniciarse** para cargarla. Una actualización silenciosa deja a la gente creyendo que usa algo que todavía no usa.
+- **Si no hay red o el comando falla**, no te bloquees: dilo en una línea y sigue con la versión que haya.
+
+Comandos de actualización, según cómo se instaló:
+
+```bash
+npx skills-igb                                    # instalado por npm
+claude plugin marketplace update skills-igb && \
+  claude plugin update skills-igb@skills-igb      # instalado como plugin
+```
+
 ## Paso 1 — Qué es esto
 
 Antes de juzgar nada, averigua de qué está hecho. Empieza por el listado del directorio y déjate guiar por lo que aparezca:
@@ -87,6 +109,20 @@ El frente que nadie audita y el que más caro sale:
 - **¿Quién sabe cómo funciona esto?** Si la respuesta es una sola persona, ese es el mayor riesgo del proyecto, por encima de cualquier problema técnico.
 - **¿Está escrito en algún sitio** lo que solo está en la cabeza de alguien?
 
+## Lo que falta también es un hallazgo
+
+El error más común al auditar es informar solo de lo que está mal y callar lo que **no está**. Un problema se ve; una ausencia no: hay que ir a buscarla a propósito.
+
+Por cada frente del Paso 2, responde las tres preguntas, en este orden:
+
+1. **¿Lo tiene?** Sí, no, o a medias.
+2. **Si no lo tiene, ¿qué pasa por eso?** En consecuencias concretas para este proyecto, no en abstracto. No *"faltan tests"*, sino *"cualquier cambio en el cálculo de comisiones puede romper algo y nadie se entera hasta que un cliente reclama"*.
+3. **¿Merece la pena aquí?** Una ausencia no siempre es un defecto. Un script que se ejecuta una vez al mes no necesita pipeline de despliegue, y decir que le falta es ruido. **Justifica por qué sí lo necesita este proyecto**, o no lo listes.
+
+Ese tercer filtro es lo que separa una auditoría útil de una lista de deseos copiada. Si no sabes decir por qué este proyecto en concreto necesita algo, no lo recomiendes.
+
+Escribe cada ausencia como una línea del informe, igual que un defecto: qué falta, qué provoca, y qué skill lo monta.
+
 ## Paso 3 — Priorizar por consecuencia
 
 Un informe de 80 hallazgos no lo lee nadie. Cinco bien ordenados sí. Tres niveles, definidos por lo que pasa, no por su nombre técnico:
@@ -124,18 +160,20 @@ Cada hallazgo, tres cosas: **qué pasa si no se arregla**, **dónde está**, y *
 
 Aquí es donde la auditoría deja de ser un diagnóstico y se convierte en un plan. Por cada hallazgo, nombra la skill correspondiente:
 
-| Lo que encontraste | Skill que lo arregla |
-|---|---|
-| Sin git, sin README, sin convenciones | `nuevo-proyecto` (modo normalizar) |
-| Sin ramas ni pull requests; se trabaja sobre la principal | `git-flujo` |
-| Despliegue manual, sin automatizar, sin entornos separados | `ci-cd` |
-| Servicio expuesto directo, sin proxy ni TLS, sin empaquetar | `contenedores` |
-| Sin análisis estático, deuda técnica sin medir | `calidad-codigo` |
-| Nadie sabe cuánta carga aguanta | `pruebas-carga` |
-| Automatizaciones frágiles, duplicadas o sin control de errores | `n8n` |
-| Bot o función con IA sin validar salidas, sin medir, sin control de coste | `ia-generativa` |
-| Modelos entrenados sin validación honesta ni línea base | `modelos-predictivos` |
-| Modelos en producción sin versionar ni vigilar | `mlops` |
+Cada fila incluye por qué suele importar. Úsalo como punto de partida, pero **sustituye el porqué genérico por el de este proyecto**: el motivo real es siempre más convincente que el motivo de manual.
+
+| Lo que encontraste — o lo que falta | Por qué importa | Skill que lo monta |
+|---|---|---|
+| Sin git, sin README, sin convenciones | No se puede volver atrás, ni saber qué cambió, ni que otro arranque el proyecto sin preguntar | `nuevo-proyecto` (modo normalizar) |
+| Sin ramas ni pull requests; se trabaja sobre la principal | Un cambio a medias deja la rama principal rota, y nadie revisa nada antes de que entre | `git-flujo` |
+| Despliegue manual, sin automatizar, sin entornos separados | Depende de que una persona concreta lo haga bien cada vez, y se prueba contra datos reales | `ci-cd` |
+| Servicio expuesto directo, sin proxy ni TLS, sin empaquetar | Tráfico sin cifrar, sin límite de tasa y sin registro; y el entorno no se puede reproducir | `contenedores` |
+| Sin análisis estático, deuda técnica sin medir | Los fallos y las vulnerabilidades conocidas se descubren en producción | `calidad-codigo` |
+| Nadie sabe cuánta carga aguanta | El límite se descubre el día que más importa que aguante | `pruebas-carga` |
+| Automatizaciones frágiles, duplicadas o sin control de errores | Fallan en silencio y la misma lógica arreglada en un sitio sigue rota en los otros dos | `n8n` |
+| Bot o función con IA sin validar salidas, sin medir, sin control de coste | El modelo se sale de formato y rompe el paso siguiente; y la factura se descubre a fin de mes | `ia-generativa` |
+| Modelos entrenados sin validación honesta ni línea base | Resultados que parecen excelentes en pruebas y fracasan en producción | `modelos-predictivos` |
+| Modelos en producción sin versionar ni vigilar | Un modelo degradado no se cae: sigue respondiendo y solo acierta menos, durante meses | `mlops` |
 
 **No lo arregles ahí mismo.** Presenta el plan, deja que el usuario elija por dónde empezar, y entonces se invoca la skill que toque. Que la auditoría termine en obras es exactamente lo que rompe la foto que acabas de tomar.
 
@@ -144,5 +182,6 @@ Aquí es donde la auditoría deja de ser un diagnóstico y se convierte en un pl
 - No modifica, instala, actualiza ni ejecuta nada del proyecto auditado.
 - No accede a servidores por su cuenta: entrega los comandos.
 - No informa de un frente que no comprobó como si estuviera bien.
+- No recomienda algo solo porque esté en la lista: si no sabe decir por qué **este** proyecto lo necesita, no lo lista.
 - No exagera la gravedad para que suene importante, ni la suaviza para no incomodar. Un secreto expuesto es urgente; la falta de tests no lo es.
 - Ante un secreto real encontrado, lo primero que dice es **rótalo ahora**, antes de seguir con el resto del informe.
