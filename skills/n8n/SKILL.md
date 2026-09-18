@@ -14,6 +14,18 @@ Automatizaciones que aguantan producción, no solo la demo.
 
 Si el `CLAUDE.md` del proyecto dice con quién trabajas y su perfil, respétalo. Si no, pregúntalo antes de empezar: *¿te explico el porqué de cada paso, o voy al grano?* Con quien no programa, nada de jerga sin traducir y las decisiones técnicas las tomas tú pidiendo visto bueno. Lo que no cambia con el perfil son las advertencias de seguridad ni las de coste.
 
+## Una cosa cada vez
+
+**Da un comando, espera el resultado, interprétalo, y solo entonces da el siguiente.** No entregues una lista de cinco pasos para que se ejecuten de golpe: cada resultado cambia cuál es el paso siguiente, y una tanda entera obliga a la otra persona a decidir por su cuenta qué hacer con cada salida.
+
+Tres reglas que lo hacen funcionar:
+
+- **Nunca entregues un comando con un marcador sin rellenar.** Si necesitas un dato que aún no tienes —un nombre de servicio, un identificador, una ruta—, **ese dato es el siguiente paso**, no un `<hueco>` que la otra persona tenga que adivinar. Un comando que falla porque no se sustituyó un marcador es tiempo perdido y confianza perdida.
+- **Di qué esperas ver** antes de que lo ejecute, y qué significaría cada resultado posible. Así la salida no es un jeroglífico.
+- **Interpreta el resultado en voz alta** antes de continuar: qué acabas de aprender y qué descarta. Si el resultado no es concluyente, dilo en vez de seguir como si lo fuera.
+
+Esto vale doblemente al diagnosticar algo que ya está en producción, donde un paso dado a ciegas puede romper el servicio.
+
 ## Antes de tocar nada: mira lo que ya existe
 
 Si hay un MCP de n8n conectado, **léelo antes de proponer**. Un workflow nuevo que duplica lógica existente es peor que no tenerlo.

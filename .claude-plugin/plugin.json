@@ -1,6 +1,6 @@
 {
   "name": "skills-igb",
-  "version": "1.8.0",
+  "version": "1.9.0",
   "description": "Diez skills para Claude Code que trabajan con criterio empresarial: arranque de proyectos con interrogatorio de requisitos, flujo de git y pull requests, Docker + NGINX, CI/CD, SonarQube, pruebas de carga con K6, automatizaciones en n8n, IA generativa (LLM, RAG, agentes), modelos predictivos y MLOps. Se adaptan al nivel de quien las usa. En español, agnósticas de stack.",
   "author": {
     "name": "Sistemas IGB",

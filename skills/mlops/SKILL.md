@@ -14,6 +14,18 @@ Un modelo en producción no es código desplegado: es código **más** datos **m
 
 Si el `CLAUDE.md` del proyecto dice con quién trabajas y su perfil, respétalo; si no, pregúntalo. Con quien no programa, explica la deriva con un ejemplo de su negocio —"el modelo aprendió con los clientes de hace dos años y los de ahora se comportan distinto"— en vez de con nombres de técnicas.
 
+## Una cosa cada vez
+
+**Da un comando, espera el resultado, interprétalo, y solo entonces da el siguiente.** No entregues una lista de cinco pasos para que se ejecuten de golpe: cada resultado cambia cuál es el paso siguiente, y una tanda entera obliga a la otra persona a decidir por su cuenta qué hacer con cada salida.
+
+Tres reglas que lo hacen funcionar:
+
+- **Nunca entregues un comando con un marcador sin rellenar.** Si necesitas un dato que aún no tienes —un nombre de servicio, un identificador, una ruta—, **ese dato es el siguiente paso**, no un `<hueco>` que la otra persona tenga que adivinar. Un comando que falla porque no se sustituyó un marcador es tiempo perdido y confianza perdida.
+- **Di qué esperas ver** antes de que lo ejecute, y qué significaría cada resultado posible. Así la salida no es un jeroglífico.
+- **Interpreta el resultado en voz alta** antes de continuar: qué acabas de aprender y qué descarta. Si el resultado no es concluyente, dilo en vez de seguir como si lo fuera.
+
+Esto vale doblemente al diagnosticar algo que ya está en producción, donde un paso dado a ciegas puede romper el servicio.
+
 ## La diferencia que lo explica todo
 
 Un servicio roto devuelve errores y alguien lo ve en cinco minutos. **Un modelo degradado sigue respondiendo con total normalidad**: mismas latencias, mismos códigos 200, cero errores en los registros. Solo acierta menos. Puede llevar meses así, tomando peores decisiones cada día, sin que nadie lo note.
