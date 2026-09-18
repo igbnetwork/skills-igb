@@ -2,7 +2,7 @@
 
 *[Versión en español](README.md)*
 
-Five skills that make [Claude Code](https://claude.com/claude-code) work to enterprise project standards instead of generating boilerplate. The instructions are written in Spanish; every skill is discoverable in both Spanish and English, so it triggers whichever language you prompt in.
+Seven skills that make [Claude Code](https://claude.com/claude-code) work to enterprise project standards instead of generating boilerplate. The instructions are written in Spanish; every skill is discoverable in both Spanish and English, so it triggers whichever language you prompt in.
 
 The main one, `nuevo-proyecto`, **does not start writing code — it starts asking**. It interrogates scope, users, personal data, payments, backups and maintenance, challenges vague answers, and summarizes its decisions for you to confirm before creating anything.
 
@@ -54,7 +54,7 @@ Copy-Item -Recurse -Force skills\* "$HOME\.claude\skills\"
 
 Restart Claude Code afterwards. Either way they install **globally**: they work across all your projects, with no per-project setup.
 
-## The five skills
+## The seven skills
 
 | Skill | What it does | How to trigger it |
 |---|---|---|
@@ -63,6 +63,8 @@ Restart Claude Code afterwards. Either way they install **globally**: they work 
 | **ci-cd** | Builds the continuous integration and delivery pipeline. Platform- and target-agnostic. | "I want CI/CD", "automated deployment" |
 | **calidad-codigo** | Configures SonarQube or SonarCloud and turns the report into prioritized work. | "set up SonarQube", "analyze code quality" |
 | **pruebas-carga** | Designs and runs load tests with K6 and visualizes them in Grafana. | "load testing", "how many users can it handle" |
+| **n8n** | Designs and reviews automations: webhooks, agents, integrations, errors and duplicates. | "n8n", "automation", "the bot fails sometimes" |
+| **ia-generativa** | Prompts, RAG, agents, output validation, cost, and how to measure answer quality. | "the bot answers badly", "RAG", "hallucinations" |
 
 You don't need to memorize the names: describe what you want in your own words and Claude picks the right skill.
 
@@ -108,6 +110,8 @@ skills/
   ci-cd/              SKILL.md + references/destinos.md
   calidad-codigo/     SKILL.md
   pruebas-carga/      SKILL.md
+  n8n/                SKILL.md
+  ia-generativa/      SKILL.md
 instalar.sh           manual install, no plugin system
 ```
 

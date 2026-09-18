@@ -5,7 +5,7 @@ import { homedir } from 'node:os';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-const SKILLS = ['nuevo-proyecto', 'contenedores', 'ci-cd', 'calidad-codigo', 'pruebas-carga'];
+const SKILLS = ['nuevo-proyecto', 'contenedores', 'ci-cd', 'calidad-codigo', 'pruebas-carga', 'n8n', 'ia-generativa'];
 
 const raiz = join(dirname(fileURLToPath(import.meta.url)), '..');
 const origen = join(raiz, 'skills');

@@ -11,8 +11,8 @@
     {
       "name": "skills-igb",
       "source": "./",
-      "description": "Cinco skills que hacen que Claude Code trabaje con criterio de proyecto empresarial: nuevo-proyecto (interroga los requisitos antes de escribir código), contenedores (Docker + NGINX), ci-cd, calidad-codigo (SonarQube) y pruebas-carga (K6 + Grafana).",
-      "version": "1.5.0",
+      "description": "Siete skills para Claude Code que trabajan con criterio empresarial: arranque de proyectos con interrogatorio de requisitos, Docker + NGINX, CI/CD, SonarQube, pruebas de carga con K6, automatizaciones en n8n e IA generativa (LLM, RAG, agentes). En español, agnósticas de stack.",
+      "version": "1.6.0",
       "author": {
         "name": "Sistemas IGB",
         "email": "sistemas@igb.network"
@@ -25,7 +25,11 @@
         "ci-cd",
         "sonarqube",
         "k6",
-        "espanol"
+        "espanol",
+        "n8n",
+        "llm",
+        "rag",
+        "ia"
       ],
       "homepage": "https://github.com/igbnetwork/skills-igb",
       "repository": "https://github.com/igbnetwork/skills-igb"

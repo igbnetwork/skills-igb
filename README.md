@@ -2,7 +2,7 @@
 
 *[English version](README.en.md)*
 
-Cinco skills que hacen que [Claude Code](https://claude.com/claude-code) trabaje con criterio de proyecto empresarial en lugar de generar plantillas. Escritas en español y agnósticas de stack.
+Siete skills que hacen que [Claude Code](https://claude.com/claude-code) trabaje con criterio de proyecto empresarial en lugar de generar plantillas. Escritas en español y agnósticas de stack.
 
 Se activan **igual en español que en inglés**: cada skill se anuncia en los dos idiomas, así que funcionan tanto con "quiero crear un proyecto nuevo" como con "I want to start a new project". Las instrucciones internas están en español.
 
@@ -58,7 +58,7 @@ Copy-Item -Recurse -Force skills\* "$HOME\.claude\skills\"
 
 Reinicia Claude Code después de instalar. En cualquiera de las dos vías quedan en **ámbito global**: valen en todos tus proyectos, no hay que repetir la instalación en cada uno.
 
-## Las cinco skills
+## Las siete skills
 
 | Skill | Qué hace | Cómo se activa |
 |---|---|---|
@@ -67,6 +67,8 @@ Reinicia Claude Code después de instalar. En cualquiera de las dos vías quedan
 | **ci-cd** | Monta el pipeline de integración y despliegue continuo. Agnóstico de plataforma y de destino. | "quiero CI/CD", "despliegue automático" |
 | **calidad-codigo** | Configura SonarQube o SonarCloud y traduce el informe en trabajo priorizado. | "configura SonarQube", "analiza la calidad" |
 | **pruebas-carga** | Diseña y ejecuta pruebas de carga con K6 y las visualiza en Grafana. | "pruebas de carga", "cuántos usuarios aguanta" |
+| **n8n** | Diseña y revisa automatizaciones: webhooks, agentes, integraciones, errores y duplicados. | "n8n", "automatización", "el bot falla a veces" |
+| **ia-generativa** | Prompts, RAG, agentes, validación de salidas, coste y cómo medir si responde bien. | "el bot responde mal", "RAG", "alucina" |
 
 No hace falta memorizar los nombres: describe lo que quieres con tus palabras y Claude elige la skill adecuada.
 
@@ -118,6 +120,8 @@ skills/
   ci-cd/              SKILL.md + references/destinos.md
   calidad-codigo/     SKILL.md
   pruebas-carga/      SKILL.md
+  n8n/                SKILL.md
+  ia-generativa/      SKILL.md
 instalar.sh           instalación manual, sin sistema de plugins
 ```
 
