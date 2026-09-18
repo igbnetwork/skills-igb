@@ -1,7 +1,7 @@
 {
   "name": "skills-igb",
-  "version": "1.6.0",
-  "description": "Siete skills para Claude Code que trabajan con criterio empresarial: arranque de proyectos con interrogatorio de requisitos, Docker + NGINX, CI/CD, SonarQube, pruebas de carga con K6, automatizaciones en n8n e IA generativa (LLM, RAG, agentes). En español, agnósticas de stack.",
+  "version": "1.7.0",
+  "description": "Nueve skills para Claude Code que trabajan con criterio empresarial: arranque de proyectos con interrogatorio de requisitos, Docker + NGINX, CI/CD, SonarQube, pruebas de carga con K6, automatizaciones en n8n, IA generativa (LLM, RAG, agentes), modelos predictivos y MLOps. En español, agnósticas de stack.",
   "type": "module",
   "bin": {
     "skills-igb": "bin/instalar.js"
@@ -30,7 +30,10 @@
     "n8n",
     "llm",
     "rag",
-    "ia"
+    "ia",
+    "machine-learning",
+    "mlops",
+    "data-science"
   ],
   "author": "Sistemas IGB <sistemas@igb.network>",
   "license": "MIT",
