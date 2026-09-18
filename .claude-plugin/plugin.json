@@ -1,7 +1,7 @@
 {
   "name": "skills-igb",
-  "version": "1.7.0",
-  "description": "Nueve skills para Claude Code que trabajan con criterio empresarial: arranque de proyectos con interrogatorio de requisitos, Docker + NGINX, CI/CD, SonarQube, pruebas de carga con K6, automatizaciones en n8n, IA generativa (LLM, RAG, agentes), modelos predictivos y MLOps. En español, agnósticas de stack.",
+  "version": "1.8.0",
+  "description": "Diez skills para Claude Code que trabajan con criterio empresarial: arranque de proyectos con interrogatorio de requisitos, flujo de git y pull requests, Docker + NGINX, CI/CD, SonarQube, pruebas de carga con K6, automatizaciones en n8n, IA generativa (LLM, RAG, agentes), modelos predictivos y MLOps. Se adaptan al nivel de quien las usa. En español, agnósticas de stack.",
   "author": {
     "name": "Sistemas IGB",
     "email": "sistemas@igb.network"
@@ -22,7 +22,10 @@
     "ia",
     "machine-learning",
     "mlops",
-    "data-science"
+    "data-science",
+    "git",
+    "pull-request",
+    "code-review"
   ],
   "homepage": "https://github.com/igbnetwork/skills-igb",
   "repository": "https://github.com/igbnetwork/skills-igb"

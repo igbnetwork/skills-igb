@@ -221,6 +221,8 @@ Stack: <stack>. Incluye configuración base, documentación
 
 Añade las líneas de atribución de Claude Code si la sesión las tiene configuradas.
 
+**Quién ejecuta esto depende del perfil** (Paso 0): con un desarrollador, entrégale el bloque de comandos y deja que los ejecute él; con quien no programa, hazlo tú y cuéntale en una frase qué acabas de guardar y para qué sirve. El flujo completo de ramas, pull requests y fusiones está en la skill `git-flujo`.
+
 **No hagas `git push`, no crees remoto y no despliegues** salvo que el usuario lo pida explícitamente.
 
 ## Paso 7 — Cerrar

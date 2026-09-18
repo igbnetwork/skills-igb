@@ -8,7 +8,7 @@ ORIGEN="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 echo "Instalando skills de IGB en $DESTINO"
 mkdir -p "$DESTINO"
 
-for s in nuevo-proyecto contenedores ci-cd calidad-codigo pruebas-carga n8n ia-generativa modelos-predictivos mlops; do
+for s in nuevo-proyecto contenedores ci-cd calidad-codigo pruebas-carga n8n ia-generativa modelos-predictivos mlops git-flujo; do
   [ -d "$ORIGEN/skills/$s" ] || { echo "  omitida (no está en el paquete): $s"; continue; }
   if [ -d "$DESTINO/$s" ]; then
     cp -r "$DESTINO/$s" "$DESTINO/$s.anterior.$(date +%Y%m%d%H%M%S)"

@@ -82,6 +82,12 @@ Un pipeline que nunca se ejecutó no está terminado. Antes de darlo por bueno:
 2. Valida la sintaxis del YAML (`python3 -c "import yaml,sys;yaml.safe_load(open('...'))"`).
 3. Di claramente que la ejecución real en la plataforma queda pendiente hasta el primer push. **No afirmes que el pipeline funciona hasta haber visto una ejecución verde.**
 
+## Entregar el trabajo
+
+Con un desarrollador, **entrégale los comandos en vez de ejecutarlos**: crear la rama, commitear el workflow, subirlo y abrir el pull request. Es su pipeline y debe saber exactamente qué entra. La skill `git-flujo` tiene el flujo completo.
+
+Con quien no programa, hazlo tú y explícale qué acaba de quedar automatizado y qué verá cuando falle.
+
 ## Límites
 
 - No crea repositorios remotos ni configura secretos en la plataforma: eso lo hace el usuario en su panel.
